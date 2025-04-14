@@ -1,9 +1,15 @@
+import { Routes, Route, Navigate } from "react-router-dom";
+import SignupPage from "./pages/SignupPage";
+import LoginPage from "./pages/LoginPage";
+
 function App() {
   return (
     <>
-      <div className="bg-green-500 text-white text-4xl p-10 font-bold">
-        Tailwind is working 🎉
-      </div>
+      <Routes>
+        <Route path="/" element={<Navigate to="/signup" />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
     </>
   );
 }
