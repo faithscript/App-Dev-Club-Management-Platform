@@ -29,13 +29,13 @@ const SignupPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-800 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#BAD6EB] flex items-center justify-center p-4">
       <div className="bg-white rounded-lg max-w-md w-full">
         {/* Header with car */}
-        <div className="bg-red-600 p-6 flex flex-col items-center">
+        <div className="bg-[#334EAC] p-6 flex flex-col items-center">
           <Car size={48} className="text-white mb-2" />
           <h1 className="text-2xl font-bold text-white">Ctrl-Alt-Elite</h1>
-          <p className="text-red-100">Super cool slogan here!</p>
+          <p className="text-[#F7F2EB]">Make Bootcamp Fun!</p>
         </div>
 
         {/* Signup Form */}
@@ -89,7 +89,7 @@ const SignupPage = () => {
           <div>
             <button
               type="submit"
-              className="w-full rounded-md bg-red-600 py-3 text-white font-medium hover:bg-red-700"
+              className="w-full rounded-md bg-[#334EAC] py-3 text-white font-medium hover:bg-[#081F5C]"
             >
               Sign Up
             </button>
