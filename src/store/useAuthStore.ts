@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 import { axiosInstance } from "../lib/axios.ts";
 import { toast } from "react-hot-toast";
 
@@ -27,7 +28,9 @@ interface LoginData {
   password: string;
 }
 
-export const useAuthStore = create<AuthStoreState>((set) => ({
+export const useAuthStore = create<AuthStoreState>()(
+    persist(
+        (set) => ({
   authUser: null,
   isSigningUp: false,
   isLoggingIn: false,
@@ -78,4 +81,10 @@ export const useAuthStore = create<AuthStoreState>((set) => ({
       set({ isUpdatingProfile: false });
     }
   },
-}));
+}),
+ {
+    name: "auth-storage", // key in localStorage
+    partialize: (state) => ({ authUser: state.authUser }), // only persist authUser
+  }
+)
+);
