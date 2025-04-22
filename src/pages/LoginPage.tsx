@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import { Car, Lock, Mail } from "lucide-react";
+import { Car, Lock, Mail, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useAuthStore } from "../store/useAuthStore";
 
 const SignupPage = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  const { login, isLoggingIn } = useAuthStore();
 
   //Right now just email validation, can add more complex validation later if we want
   const validateForm = () => {
@@ -25,6 +28,7 @@ const SignupPage = () => {
     const success = validateForm();
     if (success === true) {
       //API call to login endpoint
+      login(formData); //from useAuthStore.ts
     }
   };
 
@@ -89,9 +93,16 @@ const SignupPage = () => {
           <div>
             <button
               type="submit"
-              className="w-full rounded-md bg-[#334EAC] py-3 text-white font-medium hover:bg-[#081F5C]"
+              className="w-full rounded-md bg-[#334EAC] py-3 text-white font-medium hover:bg-[#081F5C] flex items-center justify-center"
+              disabled={isLoggingIn}
             >
-              Sign Up
+              {isLoggingIn ? (
+                <>
+                  <Loader2 className="size-5 animate-spin" />
+                </>
+              ) : (
+                "Log in"
+              )}
             </button>
           </div>
         </form>
