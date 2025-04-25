@@ -11,7 +11,9 @@ function App() {
   const { authUser } = useAuthStore();
   return (
     <>
-      <Toaster position="top-center" />
+      <Toaster position="top-center" /> {/*Toast notifications*/}
+      {/*Show the NavBar only if the user is authenticated (not on signup or login pages)*/}
+      {authUser && <NavBar />}
       <Routes>
         <Route
           path="/"
