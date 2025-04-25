@@ -1,4 +1,3 @@
-import React from "react";
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -8,14 +7,15 @@ import {
   UsersRound,
   ChevronDown,
   Menu,
+  ListChecks,
 } from "lucide-react";
 import { useAuthStore } from "../store/useAuthStore";
 import Logo from "./Logo";
 
 const NavBar = () => {
-  const { logout, authUser } = useAuthStore();
+  const { logout } = useAuthStore();
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
-  const profileMenuRef = useRef(null);
+  const profileMenuRef = useRef<HTMLDivElement>(null);
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -35,7 +35,7 @@ const NavBar = () => {
   }, []);
 
   return (
-    <header className="bg-purple-950 fixed w-full z-40 border-b border-indigo-100 rounded-full">
+    <header className="bg-purple-950 fixed top-0 w-full z-40 border-b border-indigo-100 rounded-full">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/*Logo/Home Button*/}
@@ -49,6 +49,14 @@ const NavBar = () => {
 
           <nav className="hidden md:flex items-center space-x-4">
             <>
+              {/*Bucket List Button*/}
+              <Link
+                to="/bucketlist"
+                className="px-4 py-2 rounded-full flex items-center gap-2 text-white hover:bg-purple-700 transition duration-200"
+              >
+                <ListChecks className="size-4 text-white" />
+                <span>Bucket List</span>
+              </Link>
               {/*Groups Button*/}
               <Link
                 to="/groups"
