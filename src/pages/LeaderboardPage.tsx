@@ -75,12 +75,16 @@ const LeaderboardPage: React.FC = () => {
     const groupMap: Record<string, number> = {};
 
     // Using mock data to test
-    mockUsers.forEach(user => {
-      const name = user.mentor_name;
-      const points = user.points;
-      groupMap[name] = (groupMap[name] || 0) + points;
-    });
+    // Filter users for mentors
+    const mentors = mockUsers.filter(user => user.accountType === "Mentor");
 
+    mentors.forEach(mentor => {
+      const name = mentor.fullName;
+      const points = mentor.points;
+      groupMap[name] = points;
+    });
+    
+    // Sort mentor groups by points earned
     const sortedGroups = Object.entries(groupMap)
       .map(([name, points], idx) => ({
         name,
@@ -94,11 +98,23 @@ const LeaderboardPage: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      <NavBar />
+      <NavBar /> 
+      {/* Header and top 3 mentor groups */}
       <h1 className="text-3xl font-bold text-center mt-60 mb-4">Leaderboard</h1>
+      <div className="text-center mb-8">
+        {groups.length >=3 && (
+          <div className="text-lg">
+            <div> 1st Place: { groups[groups.length - 1].name}</div>
+            <div> 2nd Place: { groups[groups.length - 2].name}</div>
+            <div> 3rd Place: { groups[groups.length - 3].name}</div>
+          </div>
+        )}
+      </div>
+
+      {/* Display cars */}
       <div className="flex-grow flex items-center justify-center px-4">
         <div className="overflow-x-auto">
-          <div className="flex w-max items-end space-x-6 py-12 px-6 bg-gray-100 rounded-lg shadow-inner h-60">
+          <div className="flex w-max items-end space-x-6 py-12 px-6 bg-gray-100 rounded-lg shadow-inner h-50">
             {groups.map((group, index) => (
               <Car key={index} name={group.name} points={group.points} carImage={group.carImage} />
             ))}
