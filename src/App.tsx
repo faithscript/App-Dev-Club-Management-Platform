@@ -9,6 +9,7 @@ import BucketListPage from "./pages/BucketListPage";
 import NavBar from "./components/NavBar";
 import { useAuthStore } from "./store/useAuthStore";
 import { Toaster } from "react-hot-toast";
+import { Group } from "lucide-react";
 
 function App() {
   const { authUser } = useAuthStore();
@@ -20,9 +21,11 @@ function App() {
       <div className={authUser && "pt-16"}>
         {/*Padding to avoid content being hidden behind the fixed NavBar*/}
         <Routes>
+          <Route path="/leaderboard" element={<LeaderboardPage />} />
+
           <Route
             path="/"
-            element={authUser ? <HomePage /> : <Navigate to="/login" />}
+            element={authUser ? <LeaderboardPage /> : <Navigate to="/leaderboard" />}
           />
           <Route
             path="/signup"
@@ -42,7 +45,7 @@ function App() {
           />
           <Route
             path="/leaderboard"
-            element={authUser ? <LeaderboardPage /> : <Navigate to="/login" />}
+            element={authUser ? <LeaderboardPage /> : <Navigate to="/" />}
           />
           <Route
             path="/bucketlist"

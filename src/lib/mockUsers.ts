@@ -1,0 +1,22 @@
+export const mockUsers = [
+    { mentor_name: "Lisa Johnson", points: 85 },
+    { mentor_name: "Lisa Johnson", points: 15 },
+    { mentor_name: "Mark Lee", points: 50 },
+    { mentor_name: "Ava Chen", points: 100 },
+    { mentor_name: "Ava Chen", points: 20 },
+    { mentor_name: "Sofia Davis", points: 95 },
+    { mentor_name: "Sofia Davis", points: 30 },
+    { mentor_name: "John Smith", points: 40 },
+    { mentor_name: "Emily Nguyen", points: 60 },
+    { mentor_name: "Emily Nguyen", points: 10 },
+    { mentor_name: "Carlos Gomez", points: 75 },
+    { mentor_name: "Carlos Gomez", points: 20 },
+    { mentor_name: "Maria Lopez", points: 35 },
+    { mentor_name: "David Kim", points: 65 },
+    { mentor_name: "Test A", points: 15 },
+    { mentor_name: "Test B", points: 12 },
+    { mentor_name: "Test C", points: 10 },
+    { mentor_name: "Test D", points: 8 },
+    { mentor_name: "Test E", points: 0 },
+    { mentor_name: "Olivia Wang", points: 45 }
+  ];
