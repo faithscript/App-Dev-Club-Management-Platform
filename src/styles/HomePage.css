@@ -1,0 +1,132 @@
+:root {
+    --c1: #760a91; /* text outline 1 */
+    --c2: #ffcc00; /* text outline 2 */
+    --c3: #00fff2; /* text color */
+}
+
+/* apply background to the entire page */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-image: url('../images/stars.png'), radial-gradient(circle, #5a045d, #003273);
+    background-repeat: repeat, no-repeat;
+    background-size: 1000px, cover;
+    background-position: top left, center;
+    background-attachment: fixed;
+}
+
+/* home contains all elements in home page*/
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0;
+}
+
+/* cover section (includes project name + start button) */
+.cover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* Centers items horizontally */
+    justify-content: center;  /* Centers items vertically */
+    min-height: 100vh;  /* Takes up the full height of the viewport */
+    text-align: center;  /* Center text horizontally */
+}
+
+.home h1 {
+    font-size: 5rem;
+    margin-bottom: 2rem;
+    text-shadow: 
+        -5px -5px 0 var(--c1),   /*first outline*/
+        5px -5px 0 var(--c1),    
+        -5px 5px 0 var(--c1),    
+        5px 5px 0 var(--c1),
+        
+        -9px -9px 0 var(--c2),    /* second outline */
+        9px -9px 0 var(--c2),     
+        -9px 9px 0 var(--c2),     
+        9px 9px 0 var(--c2);
+
+    color: var(--c3);  /* Text color */
+    font-family: 'Press Start 2P';
+}
+
+#start-button {
+    width: 13rem;
+    height: 4rem;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+/* about/user manual container */
+.about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* Centers items horizontally */
+    min-height: 100vh;
+    margin-top: 2rem;
+}
+
+/* title inside the about section */
+.home h2 {
+    font-size: 3rem;
+    margin-top: 13rem;
+    text-align: center;
+    text-shadow: 
+        -5px -5px 0 var(--c1),   /*first outline*/
+        5px -5px 0 var(--c1),    
+        -5px 5px 0 var(--c1),    
+        5px 5px 0 var(--c1),
+        
+        -9px -9px 0 var(--c2),    /* second outline */
+        9px -9px 0 var(--c2),     
+        -9px 9px 0 var(--c2),     
+        9px 9px 0 var(--c2);
+
+    color: var(--c3);  /* Text color */
+    font-family: 'Press Start 2P';
+}
+
+/* headers inside the about section */
+.header {
+    font-size: 2rem;
+    margin: 3rem 0 1rem 0;
+    padding-bottom: 0;
+    line-height: 3rem;
+    text-shadow: 
+        -2px -2px 0 var(--c1),   /*first outline*/
+        2px -2px 0 var(--c1),    
+        -2px 2px 0 var(--c1),    
+        2px 2px 0 var(--c1),
+        
+        -5px -5px 0 var(--c2),    /* second outline */
+        5px -5px 0 var(--c2),     
+        -5px 5px 0 var(--c2),     
+        5px 5px 0 var(--c2);
+
+    color: var(--c3);  /* text color */
+    font-family: 'Press Start 2P';
+}
+
+/* user manual description text */
+.desc {
+    text-align: left;
+    padding: 0rem 10rem 10rem 10rem;
+    font-size: 1.5rem;
+    margin: 1rem 0 0 0;
+    padding-bottom: 0;
+    line-height: 3rem;
+    text-shadow: 
+        -2px -2px 0 black,   /*first outline*/
+        2px -2px 0 black,    
+        -2px 2px 0 black,    
+        2px 2px 0 black;
+    color: white;  /* text color */
+    font-family: "Quantico";
+}
+
+html {
+    scroll-behavior: smooth;
+}
