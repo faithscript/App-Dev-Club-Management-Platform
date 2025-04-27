@@ -4,6 +4,7 @@ import Car from "../components/Car.tsx"
 import NavBar from "../components/NavBar";
 import { axiosInstance } from "../lib/axios";
 import { toast } from "react-hot-toast";
+import "../styles/HomePage.css";
 
 interface Mentor {
   _id: string;
@@ -54,13 +55,13 @@ const LeaderboardPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="body">
       <NavBar /> 
       {/* Header and top 3 mentor groups */}
-      <h1 className="text-3xl font-bold text-center mt-40 mb-4">Leaderboard</h1>
-      <div className="text-center mb-8">
+      <h1 className="header text-center">Leaderboard</h1>
+      <div className="desc">
         {groups.length >=1 && (
-          <div className="text-lg">
+          <div className="text-center">
             <div> 1st Place: { groups[groups.length - 1].name}</div>
           </div>
         )}
@@ -69,7 +70,7 @@ const LeaderboardPage: React.FC = () => {
       {/* Display cars */}
       <div className="flex-grow flex items-center justify-center px-4">
         <div className="overflow-x-auto">
-          <div className="flex w-max items-end space-x-6 py-12 px-6 bg-gray-100 rounded-lg shadow-inner h-45">
+          <div className="flex w-max items-end space-x-6 py-12 px-6 bg-neutral-300 rounded-lg shadow-inner mt-20 h-45">
             {groups.map((group, index) => (
               <Car key={index} name={group.name} points={group.points} carImage={group.carImage} />
             ))}
