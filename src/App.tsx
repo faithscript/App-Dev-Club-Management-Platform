@@ -21,7 +21,10 @@ function App() {
       <div className={authUser && "pt-16"}>
         {/*Padding to avoid content being hidden behind the fixed NavBar*/}
         <Routes>
-          <Route path="/" element={<SignupPage />} />
+          <Route
+            path="/"
+            element={authUser ? <HomePage /> : <Navigate to="/login" />}
+          />
           <Route
             path="/signup"
             element={!authUser ? <SignupPage /> : <Navigate to="/" />}
