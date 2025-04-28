@@ -1,8 +1,19 @@
 import React, { useState } from "react";
-import { Car, User, Lock, Mail, IdCard, ChevronDown } from "lucide-react";
+import {
+  Car,
+  User,
+  Lock,
+  Mail,
+  IdCard,
+  ChevronDown,
+  Loader2,
+} from "lucide-react";
 import { Link } from "react-router-dom";
+import { useAuthStore } from "../store/useAuthStore";
 
 const SignupPage = () => {
+  const { signup, isSigningUp } = useAuthStore();
+
   const [formData, setFormData] = useState({
     accountType: "",
     fullName: "",
@@ -29,6 +40,7 @@ const SignupPage = () => {
     const success = validateForm();
     if (success === true) {
       //API call to signup endpoint, should add user to database
+      signup(formData);
     }
   };
 
@@ -65,13 +77,13 @@ const SignupPage = () => {
                 <option value="" className="text-gray-400" disabled>
                   Select account type
                 </option>
-                <option value="student" className="text-gray-700">
+                <option value="Student" className="text-gray-700">
                   Student
                 </option>
-                <option value="mentor" className="text-gray-700">
+                <option value="Mentor" className="text-gray-700">
                   Mentor
                 </option>
-                <option value="admin" className="text-gray-700">
+                <option value="Admin" className="text-gray-700">
                   Admin
                 </option>
               </select>
@@ -154,8 +166,15 @@ const SignupPage = () => {
             <button
               type="submit"
               className="w-full rounded-md bg-[#334EAC] py-3 text-white font-medium hover:bg-[#081F5C]"
+              disabled={isSigningUp}
             >
-              Sign Up
+              {isSigningUp ? (
+                <>
+                  <Loader2 className="size-5 animate-spin" />
+                </>
+              ) : (
+                "Sign Up"
+              )}
             </button>
           </div>
         </form>
