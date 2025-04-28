@@ -44,25 +44,29 @@ const SignupPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#BAD6EB] flex items-center justify-center p-4">
-      <div className="bg-white rounded-lg max-w-md w-full">
-        {/* Header with car */}
-        <div className="bg-[#334EAC] p-6 flex flex-col items-center">
-          <Car size={48} className="text-white mb-2" />
-          <h1 className="text-2xl font-bold text-white">Ctrl-Alt-Elite</h1>
-          <p className="text-[#F7F2EB]">Make Bootcamp Fun!</p>
-        </div>
+    <div className="home">
+      {/* Header with car */}
+      <div
+        className="cover flex flex-col items-center justify-center"
+        style={{ minHeight: "20vh" }}
+      >
+        <Car size={48} className="text-[var(--c3)] mb-1" />
+        <h3>Ctrl-Alt-Elite</h3>
+        <p className="desc text-center p-2">Make Bootcamp Fun!</p>
+      </div>
 
+      <div className="bg-[rgba(26,26,46,0.85)] rounded-lg shadow-lg w-full max-w-lg mx-auto p-4 mb-4">
+        <h3 className="header text-center text-2xl mb-4">Sign Up</h3>
         {/* Signup Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-6">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           {/* Account Type */}
           <div>
-            <label className="text-sm font-medium text-gray-700">
+            <label className="block text-[var(--c3)] font-['Press_Start_2P'] text-sm mb-2">
               Account Type
             </label>
-            <div className="relative mt-2">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                <IdCard size={18} className="text-gray-400" />
+            <div className="relative">
+              <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
+                <IdCard size={18} className="text-[var(--c3)]" />
               </div>
               <select
                 id="accountType"
@@ -70,7 +74,7 @@ const SignupPage = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, accountType: e.target.value })
                 }
-                className="pl-10 w-full rounded-md border border-gray-300 py-2 px-3 appearance-none"
+                className="pl-10 w-full rounded-md border border-gray-300 py-2 px-3 appearance-none font-['Press_Start_2P'] text-sm"
                 required
               >
                 <option value="" className="text-gray-400" disabled>
@@ -94,12 +98,12 @@ const SignupPage = () => {
 
           {/* Full Name */}
           <div>
-            <label className="text-sm font-medium text-gray-700">
+            <label className="block text-[var(--c3)] font-['Press_Start_2P'] text-sm mb-2">
               Full Name
             </label>
-            <div className="relative mt-2">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3">
-                <User size={18} className="text-gray-400" />
+            <div className="relative">
+              <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
+                <User size={18} className="text-[var(--c3)]" />
               </div>
               <input
                 type="text"
@@ -108,7 +112,7 @@ const SignupPage = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, fullName: e.target.value })
                 }
-                className="input pl-10 w-full rounded-md border border-gray-300 py-2 px-3"
+                className="w-full pl-10 py-3 px-3 rounded-lg border-2 border-[var(--c3)] bg-[#23234d] text-[var(--c3)] focus:outline-none font-['Press_Start_2P'] text-sm appearance-none"
                 placeholder="John Doe"
                 required
               />
@@ -117,12 +121,12 @@ const SignupPage = () => {
 
           {/* Email */}
           <div>
-            <label className="text-sm font-medium text-gray-700">
+            <label className="block text-[var(--c3)] font-['Press_Start_2P'] text-sm mb-2">
               Email Address
             </label>
-            <div className="relative mt-2">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3">
-                <Mail size={18} className="text-gray-400" />
+            <div className="relative">
+              <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
+                <Mail size={18} className="text-[var(--c3)]" />
               </div>
               <input
                 id="email"
@@ -130,7 +134,7 @@ const SignupPage = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
-                className="pl-10 w-full rounded-md border border-gray-300 py-2 px-3"
+                className="w-full pl-10 py-3 px-3 rounded-lg border-2 border-[var(--c3)] bg-[#23234d] text-[var(--c3)] focus:outline-none font-['Press_Start_2P'] text-sm"
                 placeholder="your@email.com"
                 required
               />
@@ -139,12 +143,12 @@ const SignupPage = () => {
 
           {/* Password */}
           <div>
-            <label className="text-sm font-medium text-gray-700">
+            <label className="block text-[var(--c3)] font-['Press_Start_2P'] text-sm mb-2">
               Password
             </label>
-            <div className="relative mt-2">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3">
-                <Lock size={18} className="text-gray-400" />
+            <div className="relative">
+              <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
+                <Lock size={18} className="text-[var(--c3)]" />
               </div>
               <input
                 id="password"
@@ -153,7 +157,7 @@ const SignupPage = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, password: e.target.value })
                 }
-                className="pl-10 w-full rounded-md border border-gray-300 py-2 px-3"
+                className="w-full pl-10 py-3 px-3 rounded-lg border-2 border-[var(--c3)] bg-[#23234d] text-[var(--c3)] focus:outline-none font-['Press_Start_2P'] text-sm"
                 placeholder="••••••••"
                 required
               />
@@ -161,15 +165,19 @@ const SignupPage = () => {
           </div>
 
           {/* Submit Button */}
-          <div>
+          <div className="mt-2">
             <button
               type="submit"
               disabled={isSigningUp}
-              className="w-full rounded-md bg-[#334EAC] py-3 text-white font-medium hover:bg-[#081F5C] flex items-center justify-center"
+              className={`w-full rounded-lg bg-[var(--c2)] text-[var(--c1)] py-3 px-6 font-['Press_Start_2P'] text-base flex justify-center items-center transition-all duration-200 ${
+                isSigningUp
+                  ? "opacity-70 cursor-not-allowed"
+                  : "hover:shadow-lg"
+              }`}
             >
               {isSigningUp ? (
                 <>
-                  <Loader2 className="size-5 animate-spin" />
+                  <Loader2 className="animate-spin mr-2" size={20} />
                   Loading...
                 </>
               ) : (
@@ -180,10 +188,13 @@ const SignupPage = () => {
         </form>
 
         {/* Already have an account */}
-        <div className="bg-gray-50 pb-4 text-center font-bold">
-          <p className="text-sm">
+        <div className="mt-4 text-center">
+          <p className="font-['Press_Start_2P'] text-sm text-white">
             Already have an account?{" "}
-            <Link to="/login" className="text-blue-600 hover:text-blue-800">
+            <Link
+              to="/login"
+              className="text-[var(--c2)] no-underline hover:text-[var(--c2)]"
+            >
               Sign in
             </Link>
           </p>
