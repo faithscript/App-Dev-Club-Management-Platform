@@ -75,10 +75,10 @@ const LeaderboardPage: React.FC = () => {
           textAlign: "center",
         }}
       >
-        <h1 className="header" style={{ color: "#ffcc00", fontSize: "2rem", margin: 0, textAlign: "center" }}>
+        <h1 className="header" style={{ color: "#00fff2", fontSize: "2rem", margin: 0, textAlign: "center" }}>
           Leaderboard
         </h1>
-        <p className="desc" style={{ color: "#00fff2", fontSize: "1.1rem" }}>
+        <p className="subtitle" style={{ fontSize: "1.1rem" }}>
           The top mentor groups are racing to the finish! Earn points by completing bucket list items.
         </p>
       </div>

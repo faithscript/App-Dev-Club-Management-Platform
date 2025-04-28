@@ -25,35 +25,49 @@ function Home() {
             </section>
             <section className="about" id="about">
                 <h2>USER MANUAL</h2>
-                <p className="desc">
-                    Our web app allows you to create and manage your mentor group's bucket list, 
-                    whether it's for productivity goals, fun team bonding activities, or both! 
-                    Each group can add their unique tasks and challenges to their bucket list, 
-                    and by completing them, you'll earn points—one point per completed item. 
-                    Not only can you track your group’s progress, but you can also explore other 
-                    groups' bucket lists for inspiration or even some friendly competition!
-                    <br />
-                    <br />
-                </p>
+                <div className="manual-card">
+                    <p className="header">Create, Complete, and Compete!</p>
+                    <p className="desc">
+                        Our web app allows you to create and manage your mentor group's bucket list, 
+                        whether it's for productivity goals, fun team bonding activities, or both! 
+                        Each group can add their unique tasks and challenges to their bucket list, 
+                        and by completing them, you'll one point per item. 
+                        Not only can you track your group’s progress, but you can also explore other 
+                        groups' bucket lists for inspiration or even some friendly competition!
+                    </p>
+                </div>
+                
+                <div className="manual-card">
+                    <p className="header"> Key Features: </p>
+                    <p className="desc">
+                        <span className="highlighted">🏆 LEADERBOARD: </span>
+                        Stay motivated by tracking your group's progress in real-time and seeing how you match up with others! The leaderboard ranks teams based on the points they earn by completing bucket list items.
+                        <br /><br /> 
 
-                <p className="header"> KEY FEATURES: </p>
-                <p className="desc">
-                    🏆 LEADERBOARD: Stay motivated by tracking your group's progress in real-time and seeing how you match up with others! The leaderboard ranks teams based on the points they earn by completing bucket list items.
-                    <br /><br /> 🫂 VIEW GROUPS: View all the members of each mentor group.
-                    <br /><br /> 📝 BUCKET LISTS: View other groups' bucket lists and update your own to stay organized and inspired with new goals.
-                    <br />
-                    <br />
-                </p>
+                        <span className="highlighted">🫂 VIEW GROUPS: </span>
+                        View all the members of each mentor group.
+                        <br /><br /> 
+                        
+                        <span className="highlighted">📝 BUCKET LISTS: </span> 
+                        View other groups' bucket lists and update your own to stay organized and inspired with new goals.
+                    </p>
+                </div>
+                
+                <div className="manual-card">
+                    <p className="header"> How It Works: </p>
+                    <p className="desc">
+                        <span className="highlighted">✍️ ADD TASKS: </span>
+                        Add any fun or productive activities to your group’s bucket list, such as “Go over resumes” or “Go for a team hike.”
+                        <br /><br /> 
 
-                <p className="header"> HOW IT WORKS: </p>
-                <p className="desc">
-                    ✍️ ADD TASKS: Add any fun or productive activities to your group’s bucket list, such as “Go over resumes” or “Go for a team hike.”
-                    <br /><br /> 🪙 EARN POINTS: Every time you complete a task, you earn one point.
-                    <br /><br /> ✨ COMPETE & INSPIRE: View the bucket lists of other groups to see what they're up to, get inspired, and keep an eye on how you're ranking on the leaderboard!
-                    <br />
-                    <br />
-                    <br />
-                </p>
+                        <span className="highlighted">🪙 EARN POINTS: </span>
+                        Every time you complete a task, you earn one point.
+                        <br /><br /> 
+
+                        <span className="highlighted">✨ COMPETE & INSPIRE: </span>
+                        View the bucket lists of other groups to see what they're up to, get inspired, and keep an eye on how you're ranking on the leaderboard!
+                    </p>
+                </div>
             </section>
         </div>          
     )

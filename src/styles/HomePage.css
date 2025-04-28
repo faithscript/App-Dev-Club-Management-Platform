@@ -72,7 +72,7 @@ body {
 /* title inside the about section */
 .home h2 {
     font-size: 3rem;
-    margin-top: 13rem;
+    margin-top: 8rem;
     text-align: center;
     text-shadow: 
         -5px -5px 0 var(--c1),   /*first outline*/
@@ -92,19 +92,9 @@ body {
 /* headers inside the about section */
 .header {
     font-size: 2rem;
-    margin: 3rem 0 1rem 0;
+    text-align: center;
     padding-bottom: 0;
     line-height: 3rem;
-    text-shadow: 
-        -2px -2px 0 var(--c1),   /*first outline*/
-        2px -2px 0 var(--c1),    
-        -2px 2px 0 var(--c1),    
-        2px 2px 0 var(--c1),
-        
-        -5px -5px 0 var(--c2),    /* second outline */
-        5px -5px 0 var(--c2),     
-        -5px 5px 0 var(--c2),     
-        5px 5px 0 var(--c2);
 
     color: var(--c3);  /* text color */
     font-family: 'Press Start 2P';
@@ -118,11 +108,17 @@ body {
     margin: 1rem 0 0 0;
     padding-bottom: 0;
     line-height: 3rem;
-    text-shadow: 
-        -2px -2px 0 black,   /*first outline*/
-        2px -2px 0 black,    
-        -2px 2px 0 black,    
-        2px 2px 0 black;
+    color: white;  /* text color */
+    font-family: "Quantico";
+}
+
+.subtitle {
+    text-align: left;
+    padding: 0rem 10rem 10rem 10rem;
+    font-size: 1.5rem;
+    margin: 1rem 0 0 0;
+    padding-bottom: 0;
+    line-height: 3rem;
     color: white;  /* text color */
     font-family: "Quantico";
 }
@@ -148,4 +144,22 @@ html {
 
     color: var(--c3);  /* Text color */
     font-family: 'Press Start 2P';
+}
+
+.highlighted {
+    color: var(--c2);  /* text color */
+}
+
+.manual-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(26, 26, 46, 0.95);
+    border-radius: 1.5rem;
+    box-shadow: 0 0 24px #760a91, 0 0 48px #00fff2;
+    padding: 5rem 0rem 5rem 0rem;
+    margin: 3rem 8rem 3rem 8rem;
+    font-family: 'Press Start 2P', monospace;
+    color: white;
+    text-align: left;
 }
