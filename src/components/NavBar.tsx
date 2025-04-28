@@ -35,7 +35,7 @@ const NavBar = () => {
   }, []);
 
   return (
-    <header className="bg-purple-950 fixed top-0 w-full z-40 border-b border-indigo-100 rounded-full">
+    <header className="bg-purple-950 bg-opacity-60 backdrop-blur-md fixed top-0 w-full z-40 shadow-[0_10px_10px_rgba(71,0,49,0.5)] rounded-full">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/*Logo/Home Button*/}
