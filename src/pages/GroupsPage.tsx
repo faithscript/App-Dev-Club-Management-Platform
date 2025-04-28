@@ -42,10 +42,35 @@ const GroupsPage = () => {
   };
 
   return (
-    <>
-      <div className="flex flex-col items-center justify-between min-h-60">
+    <div
+      className="home"
+      style={{
+        minHeight: "100vh",
+        background: "linear-gradient(135deg, #23234d 0%, #760a91 100%)",
+        padding: "3rem 0 4rem 0",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <div
+        className="cover"
+        style={{
+          minHeight: "20vh",
+          marginBottom: "2rem",
+          textAlign: "center",
+        }}
+      >
+        <h1 className="header" style={{ color: "#ffcc00", fontSize: "2rem", margin: 0, textAlign: "center" }}>
+          Mentor Groups
+        </h1>
+        <p className="desc" style={{ color: "#00fff2", fontSize: "1.1rem" }}>
+          Meet your mentors and teammates! Each group is led by a mentor and includes students with their own fun facts and points.
+        </p>
+      </div>
+      <div style={{ width: "100%", maxWidth: "800px", display: "flex", flexDirection: "column", alignItems: "center" }}>
         {loading ? (
-          <p>Loading groups...</p>
+          <p style={{ color: "#00fff2", fontFamily: "'Press Start 2P'" }}>Loading groups...</p>
         ) : (
           groups.map((group, index) => (
             <Group
@@ -56,7 +81,7 @@ const GroupsPage = () => {
           ))
         )}
       </div>
-    </>
+    </div>
   );
 };
 
