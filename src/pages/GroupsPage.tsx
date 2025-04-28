@@ -64,7 +64,7 @@ const GroupsPage = () => {
         <h1 className="header" style={{ color: "#00fff2", fontSize: "2rem", margin: 0, textAlign: "center" }}>
           Mentor Groups
         </h1>
-        <p className="subtitle" style={{ fontSize: "1.1rem" }}>
+        <p className="desc" style={{ fontSize: "1.1rem" }}>
           Meet your mentors and teammates! Each group is led by a mentor and includes students with their own fun facts and points.
         </p>
       </div>

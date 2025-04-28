@@ -112,17 +112,6 @@ body {
     font-family: "Quantico";
 }
 
-.subtitle {
-    text-align: left;
-    padding: 0rem 10rem 10rem 10rem;
-    font-size: 1.5rem;
-    margin: 1rem 0 0 0;
-    padding-bottom: 0;
-    line-height: 3rem;
-    color: white;  /* text color */
-    font-family: "Quantico";
-}
-
 html {
     scroll-behavior: smooth;
 }
