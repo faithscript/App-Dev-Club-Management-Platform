@@ -36,9 +36,12 @@ const LoginPage = () => {
   return (
     <div className="home">
       {/* Header with car */}
-      <div className="cover flex flex-col items-center justify-center">
-        <Car size={48} className="text-[var(--c3)] mb-4" />
-        <h1>Ctrl-Alt-Elite</h1>
+      <div
+        className="cover flex flex-col items-center justify-center"
+        style={{ minHeight: "25vh" }}
+      >
+        <Car size={48} className="text-[var(--c3)] mb-1" />
+        <h3>Ctrl-Alt-Elite</h3>
         <p className="desc text-center p-4">Make Bootcamp Fun!</p>
       </div>
 

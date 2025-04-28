@@ -130,3 +130,22 @@ body {
 html {
     scroll-behavior: smooth;
 }
+
+.home h3 {
+    font-size: 3rem;
+    margin-top: 2rem;
+    text-align: center;
+    text-shadow: 
+        -5px -5px 0 var(--c1),   /*first outline*/
+        5px -5px 0 var(--c1),    
+        -5px 5px 0 var(--c1),    
+        5px 5px 0 var(--c1),
+        
+        -9px -9px 0 var(--c2),    /* second outline */
+        9px -9px 0 var(--c2),     
+        -9px 9px 0 var(--c2),     
+        9px 9px 0 var(--c2);
+
+    color: var(--c3);  /* Text color */
+    font-family: 'Press Start 2P';
+}
