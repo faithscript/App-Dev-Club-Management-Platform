@@ -39,7 +39,6 @@ const SignupPage = () => {
 
     const success = validateForm();
     if (success === true) {
-      //API call to signup endpoint, should add user to database
       signup(formData);
     }
   };
@@ -165,12 +164,13 @@ const SignupPage = () => {
           <div>
             <button
               type="submit"
-              className="w-full rounded-md bg-[#334EAC] py-3 text-white font-medium hover:bg-[#081F5C]"
               disabled={isSigningUp}
+              className="w-full rounded-md bg-[#334EAC] py-3 text-white font-medium hover:bg-[#081F5C] flex items-center justify-center"
             >
               {isSigningUp ? (
                 <>
                   <Loader2 className="size-5 animate-spin" />
+                  Loading...
                 </>
               ) : (
                 "Sign Up"
