@@ -88,7 +88,6 @@ const Group = ({ mentor, students }: GroupProps) => {
               >
                 <span style={{ color: "#00fff2", fontWeight: 700 }}>{student.fullName}</span>
                 <span style={{ color: "#fff", margin: "0.5rem 0" }}>{student.fun_facts || "-"}</span>
-                <span style={{ color: "#ffcc00", fontSize: "0.9rem" }}>Points: {student.points}</span>
               </div>
             ))
           ) : (
