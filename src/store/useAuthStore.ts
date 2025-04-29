@@ -30,7 +30,7 @@ interface LoginData {
 
 export const useAuthStore = create<AuthStoreState>()(
     persist(
-        (set) => ({
+        (set, get) => ({
   authUser: null,
   isSigningUp: false,
   isLoggingIn: false,
@@ -72,11 +72,26 @@ export const useAuthStore = create<AuthStoreState>()(
   updateProfile: async(data) => {
     set({ isUpdatingProfile: true });
     try {
-      const res = await axiosInstance.put("/profile/profile", data);
-      set({ authUser: res.data });
-      toast.success("Changed profile picture successfully");
+      const currentUser = get().authUser;
+      console.log('Current user before update:', currentUser);
+      console.log('Update data:', data);
+      
+      const res = await axiosInstance.put(`/profile?email=${currentUser.email}`, data);
+      console.log('Profile update response:', res.data);
+      
+      // Make sure we're preserving all existing user data and updating with new data
+      const updatedUser = {
+        ...currentUser,
+        ...res.data,
+        profile_picture: data.profile_picture || currentUser.profile_picture
+      };
+      
+      console.log('Updated user data:', updatedUser);
+      set({ authUser: updatedUser });
+      toast.success("Profile updated successfully");
     } catch (error: any) {
-      toast.error(error.response.data.message);
+      console.error('Profile update error:', error);
+      toast.error(error.response?.data?.detail || "Failed to update profile");
     } finally {
       set({ isUpdatingProfile: false });
     }
