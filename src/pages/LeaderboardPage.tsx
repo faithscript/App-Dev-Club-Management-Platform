@@ -20,7 +20,7 @@ interface MentorGroup {
   carImage: string;
 }
 
-const podiumColors = ["#ffd700", "#c0c0c0", "#cd7f32"];
+const podiumColors = ["#FFD700", "#E8E8E8", "#CD7F32"];
 const podiumLabels = ["1st", "2nd", "3rd"];
 
 const LeaderboardPage: React.FC = () => {
@@ -149,13 +149,13 @@ const LeaderboardPage: React.FC = () => {
             <tbody>
               {groups.map((group, idx) => (
                 <tr key={group.name} style={{ background: idx < 3 ? podiumColors[idx] + "22" : "#23234d", borderRadius: 12 }}>
-                  <td style={{ color: idx < 3 ? podiumColors[idx] : "#ffcc00", fontWeight: 700, fontFamily: "'Press Start 2P'", fontSize: "1.1rem", padding: "0.7rem 0.5rem" }}>
+                  <td style={{ color: idx < 3 ? podiumColors[idx] : "#00fff2", fontWeight: 700, fontFamily: "'Press Start 2P'", fontSize: "1.1rem", padding: "0.7rem 0.5rem" }}>
                     {idx + 1}
                   </td>
                   <td style={{ color: "#00fff2", fontFamily: "'Press Start 2P'", fontSize: "1.1rem", padding: "0.7rem 0.5rem" }}>
                     {group.name}
                   </td>
-                  <td style={{ color: "#ffcc00", fontFamily: "'Press Start 2P'", fontSize: "1.1rem", textAlign: "right", padding: "0.7rem 0.5rem" }}>
+                  <td style={{ color: idx < 3 ? "#ffcc00" : "#00fff2", fontFamily: "'Press Start 2P'", fontSize: "1.1rem", textAlign: "right", padding: "0.7rem 0.5rem" }}>
                     {group.points}
                   </td>
                 </tr>
