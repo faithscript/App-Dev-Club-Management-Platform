@@ -122,64 +122,62 @@ const BucketListPage = () => {
         </p>
       </div>
 
-      {/* Add Task (Mentors only) */}
-      {authUser.accountType === "mentor" && (
-        <div
+      {/* Add Task (All users) */}
+      <div
+        style={{
+          background: "rgba(26,26,46,0.95)",
+          borderRadius: "1rem",
+          boxShadow: "0 0 24px #760a91, 0 0 48px #00fff2",
+          padding: "1.5rem",
+          margin: "1rem 0 0 0",
+          width: "100%",
+          maxWidth: "600px",
+          display: "flex",
+          alignItems: "center",
+          gap: "1rem",
+        }}
+      >
+        <input
+          type="text"
+          value={newTask}
+          onChange={(e) => setNewTask(e.target.value)}
+          placeholder="Add a new task..."
           style={{
-            background: "rgba(26,26,46,0.95)",
-            borderRadius: "1rem",
-            boxShadow: "0 0 24px #760a91, 0 0 48px #00fff2",
-            padding: "1.5rem",
-            margin: "1rem 0 0 0",
-            width: "100%",
-            maxWidth: "600px",
+            flex: 1,
+            fontFamily: "'Press Start 2P'",
+            fontSize: "1rem",
+            padding: "0.75rem",
+            borderRadius: "0.5rem",
+            border: "2px solid #00fff2",
+            background: "#23234d",
+            color: "#00fff2",
+            outline: "none",
+          }}
+          disabled={adding}
+        />
+        <button
+          onClick={handleAddTask}
+          disabled={adding || !newTask.trim()}
+          style={{
+            background: "#ffcc00",
+            color: "#760a91",
+            border: "none",
+            borderRadius: "0.5rem",
+            padding: "0.75rem 1.5rem",
+            fontFamily: "'Press Start 2P'",
+            fontSize: "1rem",
+            cursor: "pointer",
+            boxShadow: "0 0 8px #00fff2",
             display: "flex",
             alignItems: "center",
-            gap: "1rem",
+            gap: "0.5rem",
+            opacity: adding || !newTask.trim() ? 0.6 : 1,
           }}
         >
-          <input
-            type="text"
-            value={newTask}
-            onChange={(e) => setNewTask(e.target.value)}
-            placeholder="Add a new task..."
-            style={{
-              flex: 1,
-              fontFamily: "'Press Start 2P'",
-              fontSize: "1rem",
-              padding: "0.75rem",
-              borderRadius: "0.5rem",
-              border: "2px solid #00fff2",
-              background: "#23234d",
-              color: "#00fff2",
-              outline: "none",
-            }}
-            disabled={adding}
-          />
-          <button
-            onClick={handleAddTask}
-            disabled={adding || !newTask.trim()}
-            style={{
-              background: "#ffcc00",
-              color: "#760a91",
-              border: "none",
-              borderRadius: "0.5rem",
-              padding: "0.75rem 1.5rem",
-              fontFamily: "'Press Start 2P'",
-              fontSize: "1rem",
-              cursor: "pointer",
-              boxShadow: "0 0 8px #00fff2",
-              display: "flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              opacity: adding || !newTask.trim() ? 0.6 : 1,
-            }}
-          >
-            <PlusCircle size={20} />
-            {adding ? "Adding..." : "Add"}
-          </button>
-        </div>
-      )}
+          <PlusCircle size={20} />
+          {adding ? "Adding..." : "Add"}
+        </button>
+      </div>
 
       {/* Task List Card */}
       <div
@@ -221,27 +219,29 @@ const BucketListPage = () => {
                   minHeight: "60px",
                 }}
               >
-                <span style={{ marginRight: "1.5rem" }}>
-                  <button
-                    onClick={() => handleToggleTaskCompletion(task.id, task.completed)}
-                    disabled={!!completing}
-                    style={{
-                      background: "none",
-                      border: "none",
-                      cursor: "pointer",
-                      padding: 0,
-                      margin: 0,
-                      outline: "none",
-                    }}
-                    title={task.completed ? "Mark as incomplete" : "Mark as complete"}
-                  >
-                    {task.completed ? (
-                      <CheckCircle2 size={24} style={{ color: "#ffcc00", filter: "drop-shadow(0 0 6px #00fff2)" }} />
-                    ) : (
-                      <Circle size={24} style={{ color: "#00fff2" }} />
-                    )}
-                  </button>
-                </span>
+                {authUser.accountType === "mentor" && (
+                  <span style={{ marginRight: "1.5rem" }}>
+                    <button
+                      onClick={() => handleToggleTaskCompletion(task.id, task.completed)}
+                      disabled={!!completing}
+                      style={{
+                        background: "none",
+                        border: "none",
+                        cursor: "pointer",
+                        padding: 0,
+                        margin: 0,
+                        outline: "none",
+                      }}
+                      title={task.completed ? "Mark as incomplete" : "Mark as complete"}
+                    >
+                      {task.completed ? (
+                        <CheckCircle2 size={24} style={{ color: "#ffcc00", filter: "drop-shadow(0 0 6px #00fff2)" }} />
+                      ) : (
+                        <Circle size={24} style={{ color: "#00fff2" }} />
+                      )}
+                    </button>
+                  </span>
+                )}
                 <span style={{ flex: 1, wordBreak: "break-word" }}>{task.description}</span>
                 {task.completed && (
                   <span
