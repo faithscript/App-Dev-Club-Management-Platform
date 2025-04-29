@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { carImages } from "../lib/carImages";
-import Car from "../components/Car.tsx"
+import { spaceshipImages } from "../lib/spaceshipImages";
+import Spaceship from "../components/Spaceship.tsx";
 import { axiosInstance } from "../lib/axios";
 import { toast } from "react-hot-toast";
 import { Crown, Star } from "lucide-react";
@@ -17,7 +17,7 @@ interface Mentor {
 interface MentorGroup {
   name: string;
   points: number;
-  carImage: string;
+  spaceshipImage: string;
 }
 
 const podiumColors = ["#FFD700", "#E8E8E8", "#CD7F32"];
@@ -40,7 +40,7 @@ const LeaderboardPage: React.FC = () => {
       const mentorGroups: MentorGroup[] = mentors.map((mentor, idx) => ({
         name: mentor.fullName,
         points: mentor.points,
-        carImage: carImages[idx % carImages.length],
+        spaceshipImage: spaceshipImages[idx % spaceshipImages.length],
       }));
 
       // Sort mentors by points descending
@@ -116,8 +116,8 @@ const LeaderboardPage: React.FC = () => {
                 )}
               </div>
               <img
-                src={group.carImage}
-                alt="car"
+                src={group.spaceshipImage}
+                alt="spaceship"
                 style={{ width: 80, height: 48, marginBottom: "1rem", filter: `drop-shadow(0 0 8px ${podiumColors[idx]})` }}
               />
               <div style={{ color: podiumColors[idx], fontFamily: "'Press Start 2P'", fontSize: "1.2rem", marginBottom: 8 }}>
