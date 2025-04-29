@@ -57,11 +57,11 @@ const GroupsPage = () => {
         className="cover"
         style={{
           minHeight: "20vh",
-          marginBottom: "2rem",
+          marginBottom: "0rem",
           textAlign: "center",
         }}
       >
-        <h1 className="header" style={{ color: "#00fff2", fontSize: "2rem", margin: 0, textAlign: "center" }}>
+        <h1 className="header" style={{ color: "#00fff2", margin: 0, textAlign: "center" }}>
           Mentor Groups
         </h1>
         <p className="desc" style={{ fontSize: "1.1rem" }}>

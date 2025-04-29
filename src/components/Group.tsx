@@ -37,7 +37,7 @@ const Group = ({ mentor, students }: GroupProps) => {
         style={{
           display: "flex",
           alignItems: "center",
-          marginBottom: "1.5rem",
+          marginBottom: "2rem",
           width: "100%",
         }}
       >

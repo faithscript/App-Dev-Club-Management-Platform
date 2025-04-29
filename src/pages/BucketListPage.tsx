@@ -118,9 +118,9 @@ const BucketListPage = () => {
   return (
     <div className="home">
       {/* Header Card */}
-      <div className="cover" style={{ minHeight: "40vh" }}>
+      <div className="cover" style={{ minHeight: "30vh", marginTop: "2rem"}}>
         <ClipboardList size={48} style={{ color: "var(--c3)", textShadow: "0 0 8px var(--c2)" , margin: "0 0 1rem 0" }} />
-        <h1 className="header" style={{ textAlign: "center", fontSize: "2rem", margin: 0 }}>
+        <h1 className="header" style={{ textAlign: "center", margin: 0 }}>
           Group Bucket Lists
         </h1>
         <p className="desc" style={{ textAlign: "center", fontSize: "1.2rem", margin: 0, padding: "1.5rem" }}>
@@ -147,9 +147,9 @@ const BucketListPage = () => {
               maxWidth: "600px",
             }}
           >
-            <h2 className="header" style={{ color: "#00fff2", fontSize: "1.5rem", marginBottom: "1.5rem" }}>
+            <p className="header" style={{ color: "#00fff2", fontSize: "1.5rem", marginBottom: "1.5rem", marginTop: "1.5rem"}}>
               {bucketList.mentor_name}'s Group Bucket List
-            </h2>
+            </p>
 
             {/* Add Task (Only for own mentor's list) */}
             {canAdd && (

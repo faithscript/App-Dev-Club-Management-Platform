@@ -53,6 +53,24 @@ body {
     font-family: 'Press Start 2P';
 }
 
+h1.header {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-shadow: 
+        -3px -3px 0 var(--c1),   /*first outline*/
+        3px -3px 0 var(--c1),    
+        -3px 3px 0 var(--c1),    
+        3px 3px 0 var(--c1),
+        
+        -5px -5px 0 var(--c2),    /* second outline */
+        5px -5px 0 var(--c2),     
+        -5px 5px 0 var(--c2),     
+        5px 5px 0 var(--c2);
+
+    color: var(--c3);  /* Text color */
+    font-family: 'Press Start 2P';
+}
+
 #start-button {
     width: 13rem;
     height: 4rem;
@@ -92,6 +110,7 @@ body {
 /* headers inside the about section */
 .header {
     font-size: 2rem;
+    margin-top: 0;
     text-align: center;
     padding-bottom: 0;
     line-height: 3rem;
@@ -151,4 +170,14 @@ html {
     font-family: 'Press Start 2P', monospace;
     color: white;
     text-align: left;
+}
+
+/* user manual description text */
+.navtext {
+    text-align: left;
+    font-size: 1.5rem;
+    padding-bottom: 0;
+    line-height: 3rem;
+    color: white;  /* text color */
+    font-family: "Quantico";
 }

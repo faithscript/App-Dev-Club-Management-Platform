@@ -16,7 +16,7 @@ function Home() {
     return (
         <div className="home">
             <section className="cover" id="cover">
-                <h1>PROJECT NAME</h1>
+                <h1 className="title">COSMOLINK</h1>
                 <img 
                     onClick={handleClick}
                     id="start-button"

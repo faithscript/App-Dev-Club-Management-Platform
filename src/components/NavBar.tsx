@@ -44,10 +44,10 @@ const NavBar = () => {
               <Logo size={3} />
             </div>
 
-            <h1 className="text-xl font-bold text-white">Ctrl-Alt-Elite</h1>
+            <h1 className="navtext">Ctrl-Alt-Elite</h1>
           </Link>
 
-          <nav className="hidden md:flex items-center space-x-4">
+          <nav className="navtext" style={{ fontSize: "1rem", display: "flex", alignContent: "center"}}>
             <>
               {/*Bucket List Button*/}
               <Link
