@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Car, Lock, Mail, Loader2 } from "lucide-react";
+import { Rocket, Lock, Mail, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../store/useAuthStore";
 import "../styles/HomePage.css";
@@ -40,7 +40,7 @@ const LoginPage = () => {
         className="cover flex flex-col items-center justify-center"
         style={{ minHeight: "25vh" }}
       >
-        <Car size={48} className="text-[var(--c3)] mb-1" />
+        <Rocket size={48} className="text-[var(--c3)] mb-1 mt-3" />
         <h3>Ctrl-Alt-Elite</h3>
         <p className="desc text-center p-4">Make Bootcamp Fun!</p>
       </div>
