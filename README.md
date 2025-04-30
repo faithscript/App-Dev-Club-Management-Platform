@@ -1,10 +1,12 @@
-# App Development Club Management Platform
+# CosmoLink: App Development Club Management Platform
 
-![App Banner](https://img.shields.io/badge/App%20Dev%20Club-Management%20Platform-blue?style=for-the-badge)
+![App Banner](https://img.shields.io/badge/CosmoLink-Management%20Platform-blue?style=for-the-badge)
 ![Hackathon Winner](https://img.shields.io/badge/Hackathon-1st%20Place-gold?style=for-the-badge)
 ![Tech Stack](https://img.shields.io/badge/Stack-MERN%20+%20Python-purple?style=for-the-badge)
 
-A comprehensive team management platform designed for software contracting clubs to facilitate mentor-student collaboration, goal tracking, and competitive achievement through an arcade-themed interface.
+CosmoLink is a comprehensive team management platform designed for software contracting clubs to facilitate mentor-student collaboration, goal tracking, and competitive achievement through an arcade-themed interface. It helps solve the lack of connection within assigned mentor groups and limited awareness of other mentor groups through features like BucketList and Leaderboard.
+
+*Developed by group Ctrl-Alt-Elite (Abhinav, Allison, Amanda, Emmanuel, Faith, Seonyoung).*
 
 ## 🚀 Features
 
@@ -59,7 +61,7 @@ npm run dev
 
 ```bash
 # Navigate to backend directory
-cd ctrl-alt-elite-back
+cd backend
 
 # Create virtual environment
 python -m venv venv
@@ -117,7 +119,7 @@ SECRET_KEY=your_jwt_secret_key
 │       ├── lib/             # Utilities
 │       └── styles/          # CSS files
 │
-└── ctrl-alt-elite-back/     # FastAPI backend
+└── backend/                 # FastAPI backend
     ├── auth.py              # Authentication
     ├── bucket_list.py       # Bucket list management
     ├── database.py          # Database connection

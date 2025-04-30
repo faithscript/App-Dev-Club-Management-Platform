@@ -13,6 +13,7 @@ interface AuthStoreState {
   login: (data: LoginData) => Promise<void>;
   logout: () => Promise<void>;
   updateProfile: (data: any) => Promise<void>;
+  updateProfilePic: (email: string, data: ProfilePicData) => Promise<void>;
 }
 
 // Define a type for sign up data
@@ -26,6 +27,11 @@ interface SignUpData {
 interface LoginData {
   email: string;
   password: string;
+}
+
+//Define an interface for profile picture data
+interface ProfilePicData {
+  profile_pic: string;
 }
 
 export const useAuthStore = create<AuthStoreState>()(
@@ -42,7 +48,7 @@ export const useAuthStore = create<AuthStoreState>()(
     set({ isSigningUp: true});
     try {
       const res = await axiosInstance.post("/auth/signup", data);
-      set({authUser: res.data});
+      set({authUser: res.data.user});
       toast.success("Account created successfully");
     } catch (error: any) {
       toast.error(error.response.data.message);
@@ -96,6 +102,23 @@ export const useAuthStore = create<AuthStoreState>()(
       set({ isUpdatingProfile: false });
     }
   },
+
+  updateProfilePic: async(email, data) => {
+    set({ isUpdatingProfile: true });
+    console.log(data);
+    console.log(typeof(data));
+    try {
+      const encodedEmail = encodeURIComponent(email);
+      const res = await axiosInstance.put(`/profile/image?email=${encodedEmail}`, data);
+      set({ authUser: res.data });
+      toast.success("Changed profile picture successfully");
+    } catch (error: any) {
+      toast.error(error.response);
+      console.log(error.response);
+    } finally {
+      set({ isUpdatingProfile: false });
+    }
+  }
 }),
  {
     name: "auth-storage", // key in localStorage
