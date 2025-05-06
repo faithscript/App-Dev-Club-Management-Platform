@@ -6,6 +6,7 @@ import GroupsPage from "./pages/GroupsPage";
 import LeaderboardPage from "./pages/LeaderboardPage";
 import HomePage from "./pages/HomePage";
 import BucketListPage from "./pages/BucketListPage";
+import BucketListDetailPage from "./pages/BucketListDetailPage";
 import NavBar from "./components/NavBar";
 import { useAuthStore } from "./store/useAuthStore";
 import { Toaster } from "react-hot-toast";
@@ -48,6 +49,10 @@ function App() {
           <Route
             path="/bucketlist"
             element={authUser ? <BucketListPage /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/bucketlist/:mentor_name"
+            element={authUser ? <BucketListDetailPage /> : <Navigate to="/login" />}
           />
         </Routes>
       </div>

@@ -68,7 +68,9 @@ const GroupsPage = () => {
           Meet your mentors and teammates! Each group is led by a mentor and includes students with their own fun facts and points.
         </p>
       </div>
-      <div style={{ width: "100%", maxWidth: "800px", display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <div
+        className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto"
+      >
         {loading ? (
           <p style={{ color: "#00fff2", fontFamily: "'Press Start 2P'" }}>Loading groups...</p>
         ) : (

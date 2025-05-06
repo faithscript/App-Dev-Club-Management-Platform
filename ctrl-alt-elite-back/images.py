@@ -90,33 +90,6 @@ async def set_profile_picture(user_id: str, file: UploadFile = File(...)):
     image_response = await upload_image(file=file, user_id=user_id, is_profile_picture=True)
     return image_response
 
-@router.get("/{image_id}")
-async def get_image(image_id: str):
-    """
-    Grabbing an image by its ID so we can display it
-    """
-    try:
-        # Looking up the file info using Motor's async methods
-        file_data = await db.fs.files.find_one({"_id": ObjectId(image_id)})
-        if not file_data:
-            raise HTTPException(status_code=404, detail="Image not found")
-        
-        # Getting the actual image data
-        chunk = await db.fs.chunks.find_one({"files_id": ObjectId(image_id)})
-        if not chunk:
-            raise HTTPException(status_code=404, detail="Image data not found")
-        
-        # Figuring out what type of image it is
-        content_type = file_data.get("metadata", {}).get("content_type", "image/jpeg")
-        
-        # Sending the image back as a stream
-        return StreamingResponse(
-            io.BytesIO(chunk["data"]),
-            media_type=content_type
-        )
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error retrieving image: {str(e)}")
-
 @router.get("/user/{user_id}")
 async def get_user_images(user_id: str):
     """
@@ -138,6 +111,49 @@ async def get_user_images(user_id: str):
         return images
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error listing images: {str(e)}")
+
+@router.get("/{image_id}")
+async def get_image(image_id: str):
+    """
+    Grabbing an image by its ID so we can display it
+    """
+    print(f"Attempting to retrieve image with ID: {image_id}")
+    try:
+        # Convert the string ID to ObjectId
+        obj_id = ObjectId(image_id)
+        print(f"Valid ObjectId: {obj_id}")
+        
+        # Looking up the file info using Motor's async methods
+        file_data = await db.fs.files.find_one({"_id": obj_id})
+        print(f"File data found: {file_data is not None}")
+        
+        if not file_data:
+            print(f"No file found with ID: {image_id}")
+            raise HTTPException(status_code=404, detail="Image not found")
+        
+        # Getting the actual image data
+        chunk = await db.fs.chunks.find_one({"files_id": obj_id})
+        print(f"Chunk data found: {chunk is not None}")
+        
+        if not chunk:
+            print(f"No chunk found for file ID: {image_id}")
+            raise HTTPException(status_code=404, detail="Image data not found")
+        
+        # Figuring out what type of image it is
+        content_type = file_data.get("metadata", {}).get("content_type", "image/jpeg")
+        print(f"Content type: {content_type}")
+        
+        # Sending the image back as a stream
+        return StreamingResponse(
+            io.BytesIO(chunk["data"]),
+            media_type=content_type
+        )
+    except ValueError as e:
+        print(f"Invalid ObjectId format: {str(e)}")
+        raise HTTPException(status_code=400, detail=f"Invalid image ID format: {str(e)}")
+    except Exception as e:
+        print(f"Error retrieving image: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error retrieving image: {str(e)}")
 
 @router.delete("/{image_id}")
 async def delete_image(image_id: str):

@@ -92,6 +92,14 @@ async def complete_task(mentor_name: str, task_id: str, user_email: str):
         {"$set": {"tasks": tasks}}
     )
 
+    # Update points for both the mentor and everyone in their group
+    
+    # Update points for the mentor (by fullName)
+    await users_collection.update_one(
+        {"fullName": mentor_name},
+        {"$inc": {"points": 10}}
+    )
+    
     # Add 10 points to every member in the group
     await users_collection.update_many(
         {"mentor_name": mentor_name},
@@ -108,22 +116,56 @@ async def toggle_task_completion(
     user_email: str,
     completed: bool = Body(..., embed=True)
 ):
+    # Print debug info
+    print(f"Toggle task: mentor={mentor_name}, task_id={task_id}, user={user_email}, completed={completed}")
+    
     role = await get_user_role(user_email)
-    if role not in ["mentor", "admin"]:
+    print(f"User role: {role}")
+    
+    if role not in ["Mentor", "Admin"]:
         raise HTTPException(status_code=403, detail="Not authorized to toggle tasks")
 
     bucket = await bucketlist_collection.find_one({"mentor_name": mentor_name})
     if not bucket:
         raise HTTPException(status_code=404, detail="Bucket list not found")
 
-    tasks = bucket["tasks"]
+    print(f"Bucket found: {bucket['mentor_name']}, task count: {len(bucket.get('tasks', []))}")
+    
+    tasks = bucket.get("tasks", [])
+    print(f"Looking for task ID: {task_id}")
+    
+    # Debug the actual task structures to see all fields
+    for i, task in enumerate(tasks):
+        print(f"Task {i}: {task}")
+    
+    all_ids = []
+    for task in tasks:
+        # Check both id and task_id fields
+        task_id_value = None
+        if "id" in task:
+            task_id_value = task["id"]
+        elif "task_id" in task:
+            task_id_value = task["task_id"]
+        all_ids.append(task_id_value)
+    print(f"Available task IDs: {all_ids}")
+    
     found = False
     for task in tasks:
-        if task["id"] == task_id:
-            if task["completed"] == completed:
+        # Check for ID in both 'id' and 'task_id' fields
+        task_id_value = None
+        if "id" in task:
+            task_id_value = task["id"]
+        elif "task_id" in task:
+            task_id_value = task["task_id"]
+            
+        print(f"Checking task: {task_id_value} == {task_id}?")
+        
+        if task_id_value == task_id:
+            if task.get("completed", False) == completed:
                 return {"message": f"Task already {'completed' if completed else 'incomplete'}"}
             task["completed"] = completed
             found = True
+            print(f"Task found and updated: {task}")
             break
 
     if not found:
@@ -135,8 +177,16 @@ async def toggle_task_completion(
         {"$set": {"tasks": tasks}}
     )
 
-    # Update points for every member in the group
+    # Update points for both the mentor and everyone in their group
     points_delta = 10 if completed else -10
+    
+    # Update points for the mentor (by fullName)
+    await users_collection.update_one(
+        {"fullName": mentor_name},
+        {"$inc": {"points": points_delta}}
+    )
+    
+    # Update points for mentees in the group
     await users_collection.update_many(
         {"mentor_name": mentor_name},
         {"$inc": {"points": points_delta}}
@@ -155,19 +205,31 @@ async def delete_task(mentor_name: str, task_id: str, user_email: str):
     if not bucket:
         raise HTTPException(status_code=404, detail="Bucket list not found")
     
-    # Filter out the task to be deleted
+    # Filter out the task to be deleted, checking both 'id' and 'task_id' fields
     tasks = bucket.get("tasks", [])
     original_count = len(tasks)
-    tasks = [task for task in tasks if task["id"] != task_id]
+    
+    # Create a new list without the task to delete
+    new_tasks = []
+    for task in tasks:
+        # Check for ID in both 'id' and 'task_id' fields
+        task_id_value = None
+        if "id" in task:
+            task_id_value = task["id"]
+        elif "task_id" in task:
+            task_id_value = task["task_id"]
+            
+        if task_id_value != task_id:
+            new_tasks.append(task)
     
     # Check if any task was removed
-    if len(tasks) == original_count:
+    if len(new_tasks) == original_count:
         raise HTTPException(status_code=404, detail="Task not found")
     
     # Update the task list
     await bucketlist_collection.update_one(
         {"mentor_name": mentor_name},
-        {"$set": {"tasks": tasks}}
+        {"$set": {"tasks": new_tasks}}
     )
     
     return {"message": f"Task deleted successfully"}

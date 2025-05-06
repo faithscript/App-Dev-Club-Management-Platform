@@ -3,6 +3,7 @@ uvicorn
 motor
 pydantic
 passlib[bcrypt]
+bcrypt
 python-multipart
 python-dotenv
 pymongo 

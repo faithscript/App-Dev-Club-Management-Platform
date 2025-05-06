@@ -3,7 +3,7 @@ import { spaceshipImages } from "../lib/spaceshipImages";
 import Spaceship from "../components/Spaceship.tsx";
 import { axiosInstance } from "../lib/axios";
 import { toast } from "react-hot-toast";
-import { Crown, Star } from "lucide-react";
+import { Crown, Star, RefreshCw } from "lucide-react";
 import "../styles/HomePage.css";
 
 interface Mentor {
@@ -26,6 +26,7 @@ const podiumLabels = ["1st", "2nd", "3rd"];
 const LeaderboardPage: React.FC = () => {
   const [groups, setGroups] = useState<MentorGroup[]>([]);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
     getAllMentorGroups();
@@ -52,7 +53,13 @@ const LeaderboardPage: React.FC = () => {
       toast.error(error.response?.data?.message || "Failed to load leaderboard");
     } finally {
       setLoading(false);
+      setRefreshing(false);
     }
+  };
+
+  const handleRefresh = () => {
+    setRefreshing(true);
+    getAllMentorGroups();
   };
 
   return (
@@ -73,6 +80,7 @@ const LeaderboardPage: React.FC = () => {
           minHeight: "20vh",
           marginBottom: "2rem",
           textAlign: "center",
+          position: "relative",
         }}
       >
         <h1 className="header" style={{ color: "#00fff2", fontSize: "2rem", margin: 0, textAlign: "center" }}>
@@ -81,6 +89,19 @@ const LeaderboardPage: React.FC = () => {
         <p className="desc" style={{ fontSize: "1.1rem" }}>
           The top mentor groups are racing to the finish! Earn points by completing bucket list items.
         </p>
+        
+        <button
+          onClick={handleRefresh}
+          disabled={loading || refreshing}
+          className="absolute top-0 right-0 bg-transparent border-none cursor-pointer p-4 text-[#00fff2] hover:text-[#ffcc00] transition-colors"
+          title="Refresh leaderboard"
+          aria-label="Refresh leaderboard"
+        >
+          <RefreshCw 
+            size={24} 
+            className={`${refreshing ? 'animate-spin' : ''}`} 
+          />
+        </button>
       </div>
       {/* Podium for Top 3 */}
       {groups.length > 0 && (

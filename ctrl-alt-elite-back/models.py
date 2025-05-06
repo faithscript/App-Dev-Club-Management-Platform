@@ -12,6 +12,7 @@ class UserSignup(BaseModel):
     mentor_name: Optional[str] = None #Discuss with group
     fun_facts: Optional[str] = ""   #Discuss with group
     points: int = 0 #Discuss with group
+    profile_pic: Optional[str] = None  # Store the image URL
 
 class UserLogin(BaseModel):
     email: str
@@ -25,15 +26,15 @@ class Profile(BaseModel):
     mentor_name: Optional[str] = None
     fun_facts: str
     points: int
-    profile_picture: Optional[str] = None  # Store the image ID
+    profile_pic: Optional[str] = None  # Store the image URL
 
 class UpdateProfile(BaseModel):
     fullName: Optional[str] = None
-    email: Optional[str] = None
-    #accountType: Optional[str] = None
     mentor_name: Optional[str] = None
     fun_facts: Optional[str] = None
-    profile_picture: Optional[str] = None  # Allow updating profile picture
+
+class ProfilePicUpdate(BaseModel):
+    profile_pic: str  # Base64-encoded image
 
 class ProfileOut(Profile):
     id: str = Field(alias="_id")
